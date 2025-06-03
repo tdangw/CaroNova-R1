@@ -7,6 +7,7 @@ import { resetAIMoveCount } from './ai.js';
 import { openShop } from './shop.js';
 import { getActiveSkin, getAISkin, addCoin } from './inventory.js';
 import { SKINS } from './skins.js';
+import { updateQuestProgress } from './quests.js';
 
 let playerSymbol = 'X';
 let aiSymbol = 'O';
@@ -252,6 +253,13 @@ function endGame(message, winner) {
     showResultOverlay('🏆 You win!');
     playSound('win');
     playerWins++;
+    updateQuestProgress('win'); // Cập nhật tiến trình nhiệm vụ
+    updateQuestProgress('play');
+    const aiName = localStorage.getItem('selectedAI') || ''; // lấy tên AI hiện tại
+    const elapsedTime = 600 - totalTime;
+
+    updateQuestProgress('win_ai', { ai: aiName });
+    updateQuestProgress('win_fast', { time: elapsedTime });
 
     // 🎁 Thưởng Xu khi thắng
     const reward = 50;
@@ -275,7 +283,7 @@ function endGame(message, winner) {
       }
     }, 50);
   }
-
+  updateQuestProgress('play'); // Cập nhật tiến trình nhiệm vụ
   updateLevelDisplay(playerWins, aiWins);
   updateScoreboard();
   saveScoreboard();

@@ -29,7 +29,7 @@ export function renderShop() {
       ? 'Đã mua'
       : skin.price === 0
       ? 'Miễn phí'
-      : `${skin.price}⭐`
+      : `${skin.price}🪙`
   }
 </button>
     `;
