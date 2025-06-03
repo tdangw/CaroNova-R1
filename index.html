@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CaroNova - Chơi với AI</title>
+  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="shop.css" />
+
+</head>
+<body>
+
+  <!-- Bước 1: Menu chọn AI -->
+<div id="ai-menu" class="overlay" style="flex-direction: column; align-items: center; padding: 20px;">
+  <h1 class="game-title">CaroNova</h1>
+  <h2>Chọn AI</h2>
+
+    
+    <div class="ai-list">
+      <!-- Meow -->
+      <div class="ai-card selected" data-ai="basic" data-name="Meow" data-avatar="assets/avatars/meow.png">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/avatars/meow.png" alt="Meow AI" />
+            <h3>Meow ⚪</h3>
+            <p>Một chú mèo đáng yêu đến từ Infernia.</p>
+          </div>
+          <div class="card-back">
+            <h3>Meow</h3>
+            <p>Dễ thương, vui nhộn và rất thông minh. 😸</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Nova -->
+      <div class="ai-card" data-ai="nova" data-name="Nova" data-avatar="assets/avatars/nova.png">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/avatars/nova.png" alt="Nova AI" />
+            <h3>Nova 🟡🔵</h3>
+            <p>Cô gái xinh đẹp, cá tính đến từ Infernia.</p>
+          </div>
+          <div class="card-back">
+            <h3>Nova</h3>
+            <p>Thông minh, tinh tế, kết nối mọi người.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Zeta -->
+      <div class="ai-card" data-ai="zeta" data-name="Zeta" data-avatar="assets/avatars/zeta.png">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/avatars/zeta.png" alt="Zeta AI" />
+            <h3>Zeta 🟣🔥</h3>
+            <p>Em gái của Nova, cá tính, thích khám phá.</p>
+          </div>
+          <div class="card-back">
+            <h3>Zeta</h3>
+            <p>Thích mạo hiểm và luôn tạo bất ngờ. 🌌</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Lumi -->
+      <div class="ai-card" data-ai="lumi" data-name="Lumi" data-avatar="assets/avatars/lumi.png">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/avatars/lumi.png" alt="Lumi AI" />
+            <h3>Lumi 🔵❄️</h3>
+            <p>Em gái của Nova, cute, thích du lịch.</p>
+          </div>
+          <div class="card-back">
+            <h3>Lumi</h3>
+            <p>Lạnh lùng ngoài mặt, nhưng ấm áp bên trong. 🧊</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Online -->
+      <div class="ai-card" data-ai="online" data-name="Online" data-avatar="assets/avatars/online.png">
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="assets/avatars/online.png" alt="Online Mode" />
+            <h3>Chơi Online 🌐</h3>
+            <p>Thách đấu với các chiến binh từ khắp vũ trụ!</p>
+          </div>
+          <div class="card-back">
+            <h3>Online</h3>
+            <p>Chế độ online đang phát triển.</br>Coming Soon! 🚀</p>
+          </div>
+        </div>
+      </div>
+      <!-- Aera -->
+<div class="ai-card" data-ai="aera" data-name="Aera" data-avatar="assets/avatars/aera.png">
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="assets/avatars/aera.png" alt="Aera AI" />
+      <h3>Aera 🟣🔥</h3>
+      <p>Em gái nhỏ từ Infernia, năng động.</p>
+    </div>
+    <div class="card-back">
+      <h3>Aera</h3>
+      <p>Tuy hơi nóng tính nhưng tâm hồn trong sáng, đầy màu sắc. 💥</p>
+    </div>
+  </div>
+</div>
+
+<!-- Kael -->
+<div class="ai-card" data-ai="kael" data-name="Kael" data-avatar="assets/avatars/kael.png">
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="assets/avatars/kael.png" alt="Kael AI" />
+      <h3>Kael 🔵⚙️</h3>
+      <p>Cậu lập trình viên logic đến từ Infernia.</p>
+    </div>
+    <div class="card-back">
+      <h3>Kael</h3>
+      <p>Không đoán mò, chỉ tính xác suất.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Sira -->
+<div class="ai-card" data-ai="sira" data-name="Sira" data-avatar="assets/avatars/sira.png">
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="assets/avatars/sira.png" alt="Sira AI" />
+      <h3>Sira 🔮🟣</h3>
+      <p>Có chiến lược, tầm nhìn, mục tiêu.</p>
+    </div>
+    <div class="card-back">
+      <h3>Sira</h3>
+      <p>Không ai đoán được tính cách của cô. 🌌</p>
+    </div>
+  </div>
+</div>
+
+<!-- Elos -->
+<div class="ai-card" data-ai="elos" data-name="Elos" data-avatar="assets/avatars/elos.png">
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="assets/avatars/elos.png" alt="Elos AI" />
+      <h3>Elos ⚪❄️</h3>
+      <p>Quá trình mới quan trọng.</p>
+    </div>
+    <div class="card-back">
+      <h3>Elos</h3>
+      <p>Mỗi ngày là một khởi đầu mới để học hỏi. ❄️</p>
+    </div>
+  </div>
+</div>
+
+<!-- Nira -->
+<div class="ai-card" data-ai="nira" data-name="Nira" data-avatar="assets/avatars/nira.png">
+  <div class="card-inner">
+    <div class="card-front">
+      <img src="assets/avatars/nira.png" alt="Nira AI" />
+      <h3>Nira 🔴💥</h3>
+      <p>“Nhanh gọn lẹ” là khẩu hiệu của Nira.</p>
+    </div>
+    <div class="card-back">
+      <h3>Nira</h3>
+      <p>Không quan tâm quá trình, chỉ cần kết quả. 💥</p>
+    </div>
+  </div>
+</div>
+
+</div>
+  <button id="next-to-name-btn" style="margin-top: 20px;">Tiếp theo</button>
+</div>
+
+<!-- Bước 2: Nhập tên người chơi -->
+<div id="name-input-overlay" class="overlay" style="display: none; flex-direction: column; align-items: center;">
+  <div class="name-card">
+    <h2 style="text-align: center; margin-bottom: 20px;">Nhập tên người chơi</h2>
+    <input type="text" id="player-name-input" placeholder="Tên của bạn..." maxlength="12" />
+    <button id="confirm-name-btn">Bắt đầu chơi</button>
+  </div>
+</div>
+
+    <!-- Giao diện menu Online -->
+<div id="online-menu" class="overlay hidden" style="flex-direction: column; align-items: center;">
+  <div class="name-card">
+    <h2 style="text-align: center; margin-bottom: 20px;">Chế độ Online</h2>
+    
+   <div id="online-user-info" class="center-text">
+  <span class="user-icon">👤</span>
+  <span id="display-name-label">Dang</span>
+</div>
+<button id="logout-btn" class="online-btn">Đăng xuất</button>
+<button id="create-room-btn" class="online-btn">🆕 Tạo phòng</button>
+<button id="join-room-btn" class="online-btn">📋 Tham gia phòng</button>
+<button id="cancel-online-btn" class="online-btn">↩️ Hủy</button>
+
+  </div>
+</div>
+    <!-- Giao diện menu Online -->
+
+  <!-- Giao diện chính của game -->
+  <div id="game-container" style="display: none;">
+  <h1 class="glow-title">CaroNova</h1>
+
+  <div style="text-align: center; margin-bottom: 8px;">
+  <div id="room-id-display" style="
+    font-size: 1rem;
+    color: #00f0ff;
+    text-shadow: 0 0 6px #00f0ff;
+    margin-top: 4px;">
+
+  </div>
+  </div>
+ <!-- Chỉ hiển thị khi ở chế độ Online -->
+
+<div class="player-layout">
+  <div id="player-left" class="player-info player-me"></div>
+  <div id="player-right" class="player-info player-opponent"></div>
+</div>
+
+    <div class="board-controls">
+          <button id="reset-online-btn" class="hidden">🔄 Chơi lại ván mới</button>
+
+      <button id="reset-btn">🔄 Chơi lại</button>
+      
+      <button id="reset-stats-btn">🧹 Reset</button>
+      <div id="timer">⏱️ 00:00</div>
+<div id="timer-online" class="hidden">⏱️ 00:00</div>
+      <div id="status">--</div>
+      <div id="scoreboard">
+        🏆Thắng:<span id="player-wins">0</span> 
+        ❌Thua:<span id="player-losses">0</span> 
+      </div>
+    </div>
+
+    <div id="turn-progress-wrapper">
+      <div id="turn-progress-bar"></div>
+    </div>
+
+    <div id="board" class="board"></div>
+    <div id="game-version" class="tooltip" data-tooltip="Xem thông tin cập nhật phiên bản">ℹ️ v1.2</div>
+    <div id="version-info-popup" class="hidden version-popup">
+      <h3>Thông tin phiên bản v1.2</h3>
+      <ul>
+        <li> Nâng cấp AI.</li>
+        <li> Bật/tắt giọng AI tương tác.</li>
+        <li> Hệ thống tính điểm và level.</li>
+        <li> Lưu thống kê và hiển thị kết quả.</li>
+        <li> Cập nhật âm thanh.</li>
+        <li> Cập nhật biểu cảm của AI.</li>
+        <li> AI nâng cao <b>- Coming soon!</b></li>
+        <li> Chế độ Online <b>- Coming soon!</b></li>
+        <li> Phiên bản <b>v1.2</b> đang phát triển...</li>
+
+      </ul>
+      <button id="close-version-popup">Đóng</button>
+    </div>
+    
+  </div>
+<!-- Modal Đăng ký/Đăng nhập -->
+<div id="auth-modal" class="overlay hidden">
+  <div class="overlay-box" style="max-width:370px;">
+    <h2 id="auth-title">Đăng nhập</h2>
+    <form id="auth-form" autocomplete="off">
+      <input id="auth-fullname" type="text" placeholder="Họ và tên" style="display:none; margin:4px 0;width:95%" maxlength="40" />
+      <input id="auth-birthday" type="date" style="display:none; margin:4px 0;width:95%" />
+      <select id="auth-gender" style="display:none; margin:4px 0;width:99%">
+        <option value="">Chọn giới tính</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+        <option value="Khác">Khác</option>
+      </select>
+      <input id="auth-username" type="text" placeholder="Tên đăng nhập (4-16 ký tự)" style="display:none; margin:4px 0;width:95%" maxlength="16" />
+<input
+  id="auth-email"
+  type="text"
+  placeholder="Email hoặc tên đăng nhập"
+  style="margin:4px 0;width:95%"
+  maxlength="40"
+  autocomplete="username"/>
+      <input id="auth-password" type="password" placeholder="Mật khẩu (6-12 ký tự)" autocomplete="current-password" style="margin:4px 0;width:95%" maxlength="12" />
+      
+      <label id="rule-label" style="display:none; margin:6px 0; font-size: 0.96em; cursor:pointer;">
+        <input id="auth-agree" type="checkbox" required /> Tôi đồng ý với 
+        <span id="rule-link" style="color: #00f; text-decoration: underline; cursor: pointer;">Quy định sử dụng</span>
+      </label>
+      <button id="auth-action-btn" type="submit">Đăng nhập</button>
+      <button type="button" id="toggle-auth-btn" style="margin-top:10px;">Chưa có tài khoản? Đăng ký</button>
+      <button type="button" id="close-auth-modal" style="margin-top:6px;">Hủy</button>
+      <div id="auth-message" style="margin-top:8px;color:salmon;"></div>
+    </form>
+  </div>
+</div>
+<!-- Popup Quy định sử dụng -->
+<div id="rule-popup" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%); background:white; color:#111; padding:24px; border-radius:12px; z-index:9999; max-width:360px; box-shadow:0 0 12px #0009;">
+  <h3>Quy định sử dụng CaroNova</h3>
+  <ol style="font-size: 1rem; line-height:1.7;">
+    <li>Hãy tử tế và lịch sự.</li>
+    <li>Tránh lời nói khó chịu hoặc bắt nạt.</li>
+    <li>Không đăng quảng cáo hoặc tin rác.</li>
+    <li>Tôn trọng quyền riêng tư của mọi người.</li>
+    <li>Không chia sẻ tài khoản cho người khác.</li>
+    <li>Không sử dụng cheat, hack, hay phần mềm gian lận.</li>
+    <li>Không phát tán thông tin cá nhân của người khác.</li>
+    <li>CaroNova có quyền xóa tài khoản vi phạm mà không cần báo trước.</li>
+  </ol>
+  <button onclick="document.getElementById('rule-popup').style.display='none'">Đã hiểu</button>
+</div>
+
+<button id="shop-btn" title="Mở Shop">🛍️</button>
+<div id="shop" class="overlay" style="display: none;">
+  <h2>🛍️ Shop Skins</h2>
+  <div class="coin-display">💰 Xu: <span id="coin-count">100</span></div>
+  <div class="skin-grid"></div>
+  <div class="shop-close-container">
+    <button class="close-btn" onclick="closeShop()">Đóng</button>
+  </div>
+</div>
+
+<div id="inventory-popup">
+  <h3>🎒 Bộ sưu tập Skin</h3>
+  <div id="inventory-list"></div>
+  <div class="shop-close-container">
+    <button class="close-btn" onclick="document.getElementById('inventory-popup').style.display='none'">Đóng</button>
+  </div>
+</div>
+
+<button id="inventory-btn" class="overlay-icon" title="Mở bộ sưu tập">🎒</button>
+<button id="ai-inventory-btn" title="Kho skin AI">🤖</button>
+
+
+
+  <script type="module" src="js/menu.js"></script>
+  <script type="module" src="js/game-online.js"></script>
+
+</body>
+</html>
