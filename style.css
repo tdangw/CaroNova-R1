@@ -129,7 +129,7 @@ body {
   color: #4ecdc4;
 }
 
-.cell.win {
+/*.cell.win {
   background-color: rgba(255, 255, 0, 0.2);
   box-shadow: 0 0 8px 2px rgba(255, 255, 0, 0.4);
   animation: winPulse 0.8s ease-in-out infinite alternate;
@@ -1171,11 +1171,11 @@ body {
   font-size: 3.5rem;
   animation: rotateDice 1s linear infinite;
 }
-.move-x {
+.player-move {
   animation: moveX 0.3s ease-out;
 }
 
-@keyframes moveX {
+/*@keyframes moveX {
   0% {
     transform: translateY(-20px);
     opacity: 0;
@@ -1194,3 +1194,4 @@ body {
   transition: all 0.2s ease;
   border-radius: 50%;
 }
+*/

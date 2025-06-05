@@ -58,7 +58,7 @@
 
 .skin-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(26vw, 108px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(26vw, 100px), 1fr));
   gap: 1vw;
   margin-bottom: 1.5vw;
   justify-items: center;
@@ -69,10 +69,10 @@
   padding: 1vw;
   border-radius: 0.8vw;
   text-align: center;
-  border: 1px solid #444;
+  border: 1px solid #308c91;
   box-shadow: 0 0.25vw 0.5vw #0005;
   width: 100%;
-  max-width: 108px;
+  max-width: 100px; /* Giới hạn chiều rộng */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -92,7 +92,7 @@
   font-size: clamp(0.7rem, 0.95vw, 0.85rem);
   color: #ccc;
   margin: 0.4vw 0;
-  min-height: 2.4em; /* ✅ đảm bảo 2 dòng */
+  min-height: 2.4em; /* 2 dòng */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,7 +104,7 @@
   border: none;
   border-radius: 0.5vw;
   cursor: pointer;
-  background: #00cc6625;
+  background: #a20c0c;
   color: white;
   font-weight: bold;
   font-size: clamp(0.75rem, 0.9vw, 0.95rem);
@@ -128,117 +128,7 @@
   border-color: #fbff00;
   box-shadow: 0 0.5vw 1vw #0005;
 }
-/* ================= INVENTORY ICON ================= */
-#inventory-btn {
-  position: fixed;
-  top: 1.5vw;
-  right: 4vw;
-  z-index: 1000;
-  font-size: clamp(1.1rem, 1.8vw, 1.4rem);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-}
 
-/* ================= INVENTORY POPUP ================= */
-#inventory-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #1c1f26;
-  padding: 3vw;
-  border-radius: 1.5vw;
-  color: white;
-  z-index: 10001;
-  width: min(95vw, 600px);
-  height: auto;
-  box-shadow: 0 0 1vw #000a;
-  display: none;
-  max-height: 90vh;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #888 transparent;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE/Edge */
-}
-#inventory-popup::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
-#inventory-popup::-webkit-scrollbar {
-  width: 6px;
-}
-#inventory-popup::-webkit-scrollbar-thumb {
-  background-color: #666;
-  border-radius: 6px;
-}
-#inventory-popup h3 {
-  text-align: center;
-  margin-bottom: 1.5vw;
-  font-size: clamp(1rem, 1.7vw, 1.3rem);
-}
-
-#inventory-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1vw;
-  justify-content: center;
-}
-
-.inventory-item {
-  background: #2e3038;
-  border: 1px solid #444;
-  border-radius: 0.8vw;
-  padding: 1vw;
-  text-align: center;
-  width: min(26vw, 92px);
-}
-
-.inventory-item .skin-icon {
-  font-size: clamp(1.3rem, 3vw, 1.8rem);
-}
-
-.inventory-item .skin-name {
-  font-size: clamp(0.7rem, 1vw, 0.85rem);
-  margin-top: 0.4vw;
-}
-
-.inventory-item button {
-  margin-top: 0.4vw;
-  background: #0099ff;
-  border: none;
-  padding: 0.4vw 0.9vw;
-  color: white;
-  border-radius: 0.5vw;
-  cursor: pointer;
-  font-size: clamp(0.7rem, 0.9vw, 0.85rem);
-}
-
-.inventory-item button[disabled] {
-  background: #666;
-  cursor: not-allowed;
-}
-#ai-inventory-btn {
-  position: fixed;
-  top: 6vw;
-  right: 4vw;
-  width: 48px;
-  height: 48px;
-  font-size: 1.8rem;
-  background: transparent;
-  border: none;
-  border-radius: 50%;
-  box-shadow: none;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  z-index: 1000;
-}
-#ai-inventory-btn:hover {
-  transform: scale(1.2);
-}
 #shop-btn {
   position: absolute;
   top: 12px;
@@ -253,38 +143,9 @@
 #shop-btn:hover {
   transform: scale(1.2);
 }
-#inventory-btn,
-#shop-btn,
-#ai-inventory-btn {
-  position: fixed;
-  right: 1.5vw;
-  width: 46px;
-  height: 46px;
-  font-size: 1.8rem;
-  background: transparent;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 1000;
-}
-
-#inventory-btn {
-  top: 1.5vw;
-}
 #shop-btn {
   top: 6vw;
 }
-#ai-inventory-btn {
-  top: 10.5vw;
-}
-#inventory-btn:hover {
-  transform: scale(1.2);
-}
-
-/* ================= AI INVENTORY POPUP ================= */
 .reward-popup {
   position: fixed;
   top: 40vh;
@@ -314,4 +175,46 @@
     opacity: 0;
     transform: translate(-50%, -40px);
   }
+}
+
+/* Nút X luôn nổi trong shop */
+#shop-close-fixed {
+  position: sticky;
+  top: 30px; /* Cách trên 30px */
+  margin-left: auto; /* ✅ Đẩy sang phải */
+  display: block;
+  background: #000;
+  color: white;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  padding: 4px 10px;
+  z-index: 10001;
+  cursor: pointer;
+}
+#shop-close-fixed:hover {
+  background: #00f0ff;
+  color: black;
+  transform: scale(1.1);
+}
+
+/* Hiệu ứng preview cho các hiệu ứng */
+.effect-preview-preview {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  margin: 4px auto;
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+
+.preview-icon {
+  font-size: 1.4rem;
+  color: white;
+  display: inline-block;
+  pointer-events: none;
 }

@@ -1,3 +1,4 @@
+  <!-- CaroNova - Chơi với AI -->
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -7,16 +8,35 @@
   <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="shop.css" />
     <link rel="stylesheet" href="quests.css" />
-
+    <link rel="stylesheet" href="inventory.css" />
+    <link rel="stylesheet" href="effect.css" />
+  <!-- Thêm CSS ở đây -->
 </head>
 <body>
-
+    <div id="game-version" class="tooltip" data-tooltip="Xem thông tin cập nhật phiên bản">ℹ️ v1.2</div>
+    <div id="version-info-popup" class="hidden version-popup">
+      <h3>Thông tin phiên bản v1.2-R1</h3>
+      <ul>
+        <li> Nâng cấp AI.</li>
+        <li> Voice AI.</li>
+        <li> Hệ thống tính điểm và level.</li>
+        <li> Lưu thống kê và hiển thị kết quả.</li>
+        <li> Cập nhật âm thanh.</li>
+        <li> Cập nhật biểu cảm của AI.</li>
+        <li> AI nâng cao <b>- Coming soon!</b></li>
+        <li> Chế độ Online <b>- Beta!</b></li>
+        <li> Phiên bản <b>v1.2-R1</b> đang phát triển...</li>
+        <li> Nhiệm vụ và phần thưởng.</li>
+        <li> Kho skin AI.</li>
+        <li> Shop và bộ sưu tập.</li>
+        <li> Hệ thống chat - đang phát triển.</li>
+      </ul>
+      <button id="close-version-popup">Đóng</button>
+    </div>
   <!-- Bước 1: Menu chọn AI -->
 <div id="ai-menu" class="overlay" style="flex-direction: column; align-items: center; padding: 20px;">
   <h1 class="game-title">CaroNova</h1>
   <h2>Chọn AI</h2>
-
-    
     <div class="ai-list">
       <!-- Meow -->
       <div class="ai-card selected" data-ai="basic" data-name="Meow" data-avatar="assets/avatars/meow.png">
@@ -186,15 +206,14 @@
   <div class="name-card">
     <h2 style="text-align: center; margin-bottom: 20px;">Chế độ Online</h2>
     
-   <div id="online-user-info" class="center-text">
-  <span class="user-icon">👤</span>
-  <span id="display-name-label">Dang</span>
-</div>
-<button id="logout-btn" class="online-btn">Đăng xuất</button>
-<button id="create-room-btn" class="online-btn">🆕 Tạo phòng</button>
-<button id="join-room-btn" class="online-btn">📋 Tham gia phòng</button>
-<button id="cancel-online-btn" class="online-btn">↩️ Hủy</button>
-
+    <div id="online-user-info" class="center-text">
+     <span class="user-icon">👤</span>
+    <span id="display-name-label">Dang</span>
+    </div>
+  <button id="logout-btn" class="online-btn">Đăng xuất</button>
+  <button id="create-room-btn" class="online-btn">🆕 Tạo phòng</button>
+  <button id="join-room-btn" class="online-btn">📋 Tham gia phòng</button>
+  <button id="cancel-online-btn" class="online-btn">↩️ Hủy</button>
   </div>
 </div>
     <!-- Giao diện menu Online -->
@@ -239,23 +258,7 @@
     </div>
 
     <div id="board" class="board"></div>
-    <div id="game-version" class="tooltip" data-tooltip="Xem thông tin cập nhật phiên bản">ℹ️ v1.2</div>
-    <div id="version-info-popup" class="hidden version-popup">
-      <h3>Thông tin phiên bản v1.2</h3>
-      <ul>
-        <li> Nâng cấp AI.</li>
-        <li> Bật/tắt giọng AI tương tác.</li>
-        <li> Hệ thống tính điểm và level.</li>
-        <li> Lưu thống kê và hiển thị kết quả.</li>
-        <li> Cập nhật âm thanh.</li>
-        <li> Cập nhật biểu cảm của AI.</li>
-        <li> AI nâng cao <b>- Coming soon!</b></li>
-        <li> Chế độ Online <b>- Coming soon!</b></li>
-        <li> Phiên bản <b>v1.2</b> đang phát triển...</li>
 
-      </ul>
-      <button id="close-version-popup">Đóng</button>
-    </div>
     
   </div>
 <!-- Modal Đăng ký/Đăng nhập -->
@@ -309,26 +312,14 @@
 </div>
 
 <button id="shop-btn" title="Mở Shop">🛍️</button>
-<div id="shop" class="overlay" style="display: none;">
-  <h2>🛍️ Shop Skins</h2>
-  <div class="coin-display">💰 Xu: <span id="coin-count">100</span></div>
-  <div class="skin-grid"></div>
-  <div class="shop-close-container">
-    <button class="close-btn" onclick="closeShop()">Đóng</button>
-  </div>
-</div>
 
-<div id="inventory-popup">
-  <h3>🎒 Bộ sưu tập Skin</h3>
-  <div id="inventory-list"></div>
-  <div class="shop-close-container">
-    <button class="close-btn" onclick="document.getElementById('inventory-popup').style.display='none'">Đóng</button>
-  </div>
-</div>
+
+
 
 <button id="inventory-btn" class="overlay-icon" title="Mở bộ sưu tập">🎒</button>
 <button id="ai-inventory-btn" title="Kho skin AI">🤖</button>
 <button id="quest-icon-btn" class="quest-icon" title="Xem nhiệm vụ">📜</button>
+<div id="inventory-popup" style="display:none;"></div>
 
 
 
@@ -336,6 +327,17 @@
   <script type="module" src="js/game-online.js"></script>
 <script type="module" src="js/quests.js"></script>
 <script type="module" src="js/quest-ui.js"></script>
+<script type="module">
+  import { openShop } from './js/shop-ui.js';
+  document.getElementById('shop-btn').addEventListener('click', openShop);
+</script>
+<script type="module">
+  import { openInventory, openAIInventory } from './js/inventory.js';
+
+  document.getElementById('inventory-btn')?.addEventListener('click', () => openInventory());
+  document.getElementById('ai-inventory-btn')?.addEventListener('click', () => openAIInventory());
+</script>
+
 
 </body>
 </html>

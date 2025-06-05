@@ -4,10 +4,12 @@ import { reactToPlayerMove, reactToAIMove } from './novaReaction.js';
 import { playSound } from './soundManager.js';
 import { updateLevelDisplay } from './level.js';
 import { resetAIMoveCount } from './ai.js';
-import { openShop } from './shop.js';
+import { openShop } from './shop-ui.js';
 import { getActiveSkin, getAISkin, addCoin } from './inventory.js';
 import { SKINS } from './skins.js';
 import { updateQuestProgress } from './quests.js';
+import { getSelectedItem, getAISelectedItem } from './inventory.js';
+import { getEffectClassById } from './effect.js';
 
 let playerSymbol = 'X';
 let aiSymbol = 'O';
@@ -29,8 +31,6 @@ function getAISkinIcon() {
   return getSkinIconById(getAISkin());
 }
 // Hiển thị biểu tượng skin người chơi và AI
-
-// Đã cập nhật hiển thị icon skin đúng trong đoạn chọn người đi trước
 
 const shopBtn = document.getElementById('shop-btn');
 if (shopBtn) {
@@ -168,28 +168,85 @@ function makeMove(row, col, player) {
   const index = row * boardSize + col;
   const cells = boardElement.querySelectorAll('.cell');
 
-  // ✅ Lấy icon từ skin
+  // 👉 Lấy icon từ skin
   let icon;
   if (player === playerSymbol) {
-    icon = getPlayerSkinIcon() || player; // Nếu chưa chọn skin, dùng X
+    icon = getPlayerSkinIcon() || player;
   } else if (player === aiSymbol) {
-    icon = getAISkinIcon() || player; // Nếu chưa chọn skin, dùng O
+    icon = getAISkinIcon() || player;
   }
 
   cells[index].textContent = icon;
+
+  // 🎯 Lấy hiệu ứng từ effectId (nếu có)
+  const effectId =
+    player === playerSymbol
+      ? getSelectedItem('move-effect')
+      : getAISelectedItem('move-effect');
+  const moveEffectClass = getEffectClassById(effectId);
+
+  // Fallback nếu không có effect (mặc định glow)
+  const fallback = player === playerSymbol ? 'player-move' : 'ai-move';
+
+  // 🧹 Gỡ class cũ
+  [...cells[index].classList]
+    .filter(
+      (cls) =>
+        cls.startsWith('fx-move-') || cls === 'player-move' || cls === 'ai-move'
+    )
+    .forEach((cls) => cells[index].classList.remove(cls));
+
+  // 🟡 DEBUG trước khi gán
+  console.log('🟡 [DEBUG MOVE]');
+  console.log('Người chơi:', player);
+  console.log('Ô:', row, col);
+  console.log('Icon:', icon);
+  console.log('Effect ID:', effectId);
+  console.log('Class hiệu ứng:', moveEffectClass);
+  console.log('Fallback:', fallback);
+  console.log('Class trước:', cells[index].className);
+
+  // ✨ Gán hiệu ứng
+  if (moveEffectClass) {
+    cells[index].classList.add(moveEffectClass);
+    setTimeout(() => {
+      cells[index].classList.remove(moveEffectClass);
+    }, 500);
+  } else {
+    cells[index].classList.add(fallback);
+    setTimeout(() => {
+      cells[index].classList.remove(fallback);
+    }, 500);
+  }
+
+  // 👕 Gán class X hoặc O
   cells[index].classList.add(player);
-  cells[index].classList.add('player-move');
 
+  // ✅ Gán player-move CHỈ khi là người chơi
+  if (player === playerSymbol) {
+    cells[index].classList.add('player-move');
+    setTimeout(() => {
+      if (!cells[index].classList.contains('win')) {
+        cells[index].classList.remove('player-move');
+      }
+    }, 500);
+  }
+
+  // 🧪 DEBUG sau khi gán
   setTimeout(() => {
-    if (!cells[index].classList.contains('win')) {
-      cells[index].classList.remove('player-move');
-    }
-  }, 500);
+    const anim = getComputedStyle(cells[index]).animationName;
+    console.log('Class sau khi gán:', cells[index].classList.value);
+    console.log('Animation đang chạy:', anim);
+    console.log('=======================');
+  }, 10);
 
+  // 🔊 Hiệu ứng âm thanh
   if (typeof window.playPlaceSound === 'function') {
     window.playPlaceSound();
   }
 }
+
+// Kết thúc hàm makeMove
 
 function checkWin(row, col, player) {
   const directions = [
@@ -233,13 +290,26 @@ function checkWin(row, col, player) {
 function inBounds(row, col) {
   return row >= 0 && row < boardSize && col >= 0 && col < boardSize;
 }
-
+// Hàm này sẽ đánh dấu các ô chiến thắng bằng hiệu ứng và màu sắc
 function highlightCells(cells) {
   const allCells = boardElement.querySelectorAll('.cell');
+
+  const winEffectId =
+    currentPlayer === playerSymbol
+      ? getSelectedItem('winfx')
+      : getAISelectedItem('winfx');
+
+  const winEffectClass = getEffectClassById(winEffectId);
+
   cells.forEach(([r, c]) => {
     const index = r * boardSize + c;
-    allCells[index].classList.remove('ai-move');
-    allCells[index].classList.add('win');
+    const cell = allCells[index];
+    cell.classList.remove('ai-move');
+    cell.classList.add('win');
+
+    if (winEffectClass) {
+      cell.classList.add(winEffectClass);
+    }
   });
 }
 
@@ -250,10 +320,17 @@ function endGame(message, winner) {
   clearInterval(turnTimerId);
 
   if (winner === 'player') {
+    // Ghi nhận chuỗi thắng liên tiếp
+    let winStreak = Number(localStorage.getItem('winStreak') || 0);
+    winStreak++;
+    localStorage.setItem('winStreak', winStreak);
+
     showResultOverlay('🏆 You win!');
     playSound('win');
     playerWins++;
     updateQuestProgress('win'); // Cập nhật tiến trình nhiệm vụ
+    updateQuestProgress('win_streak'); // Cập nhật tiến trình nhiệm vụ chuỗi thắng
+
     updateQuestProgress('play');
     const aiName = localStorage.getItem('selectedAI') || ''; // lấy tên AI hiện tại
     const elapsedTime = 600 - totalTime;
@@ -268,10 +345,13 @@ function endGame(message, winner) {
     // Hiệu ứng hiện Xu
     const rewardBox = document.createElement('div');
     rewardBox.className = 'reward-popup';
-    rewardBox.textContent = `+${reward} ⭐`;
+    rewardBox.textContent = `+${reward} 💰`;
     document.body.appendChild(rewardBox);
     setTimeout(() => rewardBox.remove(), 3500);
   } else if (winner === 'ai') {
+    // ❌ Nếu thua thì reset combo
+    localStorage.setItem('winStreak', 0);
+
     showResultOverlay('😿 You lose!');
     playSound('lose');
     aiWins++;

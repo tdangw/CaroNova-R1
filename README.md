@@ -137,11 +137,11 @@ Mã type: "play", "play_online", "play_ai"...
 # Test
 
 🏷️ ID 📘 Mô tả nhiệm vụ 🔁 Mã type 🎁 Thưởng
-daily-play-2 Chơi 2 ván bất kỳ play 1 🪙
-daily-win-1 Thắng 1 ván win 2 🪙
-daily-win-streak Thắng liên tiếp 3 ván win_streak 5 🪙
-daily-win-nova Đánh bại Nova win_ai_nova 3 🪙
-daily-win-fast Thắng trong 30 giây win_fast_30s 6 🪙
+daily-play-2 Chơi 2 ván bất kỳ play 1 💰
+daily-win-1 Thắng 1 ván win 2 💰
+daily-win-streak Thắng liên tiếp 3 ván win_streak 5 💰
+daily-win-nova Đánh bại Nova win_ai_nova 3 💰
+daily-win-fast Thắng trong 30 giây win_fast_30s 6 💰
 
 Cách xáo trộn nhiệm vụ từ danh sách có sẵn
 Thay thế nhiệm vụ đã hoàn thành

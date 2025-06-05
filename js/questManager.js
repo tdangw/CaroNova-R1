@@ -48,3 +48,34 @@ export function resetDailyQuestCache() {
   const key = getTodayQuestKey();
   localStorage.removeItem(key);
 }
+// 📆 Lấy ngày hiện tại dạng YYYY-MM-DD
+function getTodayDate() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+// 🗓 Lấy tuần hiện tại dạng YYYY-WW
+function getCurrentWeekKey() {
+  const d = new Date();
+  d.setHours(0, 0, 0, 0);
+  d.setDate(d.getDate() + 4 - (d.getDay() || 7)); // chuyển về thứ 4 trong tuần
+  const yearStart = new Date(d.getFullYear(), 0, 1);
+  const week = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+  return `${d.getFullYear()}-W${week}`;
+}
+
+// 🧼 Reset nếu ngày mới
+export function autoResetQuestsIfNeeded() {
+  const today = getTodayDate();
+  const lastReset = localStorage.getItem('lastDailyReset');
+  if (lastReset !== today) {
+    resetDailyQuestCache();
+    localStorage.setItem('lastDailyReset', today);
+  }
+
+  const currentWeek = getCurrentWeekKey();
+  const lastWeeklyReset = localStorage.getItem('lastWeeklyReset');
+  if (lastWeeklyReset !== currentWeek) {
+    localStorage.setItem('caro-quests-weekly', '{}'); // reset thủ công
+    localStorage.setItem('lastWeeklyReset', currentWeek);
+  }
+}

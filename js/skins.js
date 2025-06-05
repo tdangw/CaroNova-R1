@@ -6,6 +6,7 @@ export const SKINS = [
     name: 'X Cổ điển',
     icon: 'X',
     price: 0,
+    type: 'skin',
     description: 'Biểu tượng X cổ điển màu đỏ.',
   },
   {
@@ -13,6 +14,7 @@ export const SKINS = [
     name: 'O Cổ điển',
     icon: 'O',
     price: 0,
+    type: 'skin',
     description: 'Biểu tượng O cổ điển màu xanh.',
   },
   {
@@ -20,6 +22,7 @@ export const SKINS = [
     name: 'X hiện đại',
     icon: '❌',
     price: 0,
+    type: 'skin',
     description: 'Biểu tượng X hiện đại.',
   },
   {
@@ -27,6 +30,7 @@ export const SKINS = [
     icon: '⭕',
     name: 'O hiện đại',
     price: 0,
+    type: 'skin',
     description: 'Biểu tượng O hiện đại.',
   },
   {
@@ -34,6 +38,7 @@ export const SKINS = [
     name: 'Hổ Chiến',
     icon: '🐯',
     price: 50,
+    type: 'skin',
     description: 'Gầm vang bàn cờ!',
   },
   {
@@ -41,6 +46,7 @@ export const SKINS = [
     name: 'Robot AI',
     icon: '🤖',
     price: 75,
+    type: 'skin',
     description: 'Thông minh nhân tạo vượt trội.',
   },
   {
@@ -48,6 +54,7 @@ export const SKINS = [
     name: 'Ninja',
     icon: '🥷',
     price: 100,
+    type: 'skin',
     description: 'Ẩn thân, ra đòn bất ngờ!',
   },
   {
@@ -55,6 +62,7 @@ export const SKINS = [
     name: 'Rồng Lửa',
     icon: '🐉',
     price: 120,
+    type: 'skin',
     description: 'Khạc lửa mỗi nước đi.',
   },
   {
@@ -62,6 +70,7 @@ export const SKINS = [
     name: 'Hồn Ma',
     icon: '👻',
     price: 90,
+    type: 'skin',
     description: 'Ám ảnh mọi đường cờ.',
   },
   {
@@ -69,6 +78,7 @@ export const SKINS = [
     name: 'Lửa',
     icon: '🔥',
     price: 110,
+    type: 'skin',
     description: 'Rực cháy và huyền bí.',
   },
   {
@@ -76,6 +86,7 @@ export const SKINS = [
     name: 'Băng',
     icon: '❄️',
     price: 95,
+    type: 'skin',
     description: 'Lạnh lùng và kiêu sa.',
   },
   {
@@ -83,6 +94,7 @@ export const SKINS = [
     name: 'star',
     icon: '✨',
     price: 130,
+    type: 'skin',
     description: 'Trí tuệ nhân tạo tinh tú.',
   },
   {
@@ -90,6 +102,7 @@ export const SKINS = [
     name: 'MèoCute',
     icon: '🐱',
     price: 80,
+
     description: 'Im lặng nhưng nguy hiểm.',
   },
   {
@@ -97,6 +110,7 @@ export const SKINS = [
     name: 'Kiếm',
     icon: '⚔️',
     price: 105,
+    type: 'skin',
     description: 'Chém rạch cả bàn cờ!',
   },
   {
@@ -104,6 +118,7 @@ export const SKINS = [
     name: 'Phượng Hoàng',
     icon: '🦜',
     price: 100,
+    type: 'skin',
     description: 'Hồi sinh từ tro tàn, bay cao bất tận.',
   },
   {
@@ -111,6 +126,7 @@ export const SKINS = [
     name: 'Phi Tiêu Ninja',
     icon: '🌀',
     price: 70,
+    type: 'skin',
     description: 'Đòn đánh nhanh gọn, khó đoán.',
   },
   {
@@ -118,6 +134,7 @@ export const SKINS = [
     name: 'Hạt Nhân Vũ Trụ',
     icon: '🪐',
     price: 120,
+    type: 'skin',
     description: 'Sức mạnh xoáy tâm không gian.',
   },
   {
@@ -125,6 +142,7 @@ export const SKINS = [
     name: 'Slime Dẻo',
     icon: '🟢',
     price: 60,
+    type: 'skin',
     description: 'Lầy lội và khó chịu bất ngờ.',
   },
   {
@@ -132,6 +150,7 @@ export const SKINS = [
     name: 'Ma Cà Rồng',
     icon: '🧛',
     price: 90,
+    type: 'skin',
     description: 'Ẩn nấp trong bóng tối, hút máu chiến lược.',
   },
   {
@@ -139,6 +158,7 @@ export const SKINS = [
     name: 'Lưỡi Gươm Samurai',
     icon: '🗡️',
     price: 95,
+    type: 'skin',
     description: 'Tinh thần võ sĩ đạo sắc bén.',
   },
   {
@@ -146,6 +166,7 @@ export const SKINS = [
     name: 'Thỏ Ngọc',
     icon: '🐇',
     price: 85,
+    type: 'skin',
     description: 'Nhanh nhẹn và linh hoạt như trăng rằm.',
   },
   {
@@ -153,6 +174,7 @@ export const SKINS = [
     name: 'Nhân Tố Ngoài Hành Tinh',
     icon: '👽',
     price: 110,
+    type: 'skin',
     description: 'Thông minh... và hơi đáng sợ.',
   },
   {
@@ -160,6 +182,7 @@ export const SKINS = [
     name: 'Kho Báu Cướp Biển',
     icon: '💰',
     price: 90,
+    type: 'skin',
     description: 'Tỏa sáng như vàng thật.',
   },
   {
@@ -167,6 +190,7 @@ export const SKINS = [
     name: 'Lò Phản Ứng',
     icon: '☢️',
     price: 100,
+    type: 'skin',
     description: 'Nổ tung chiến lược đối thủ.',
   },
   {
@@ -174,6 +198,7 @@ export const SKINS = [
     name: 'Tinh Linh Lá',
     icon: '🍃',
     price: 70,
+    type: 'skin',
     description: 'Nhẹ nhàng, không ai lường được.',
   },
   {
@@ -181,6 +206,7 @@ export const SKINS = [
     name: 'Ngôi Sao Huyền Thoại',
     icon: '⭐',
     price: 120,
+    type: 'skin',
     description: 'Toả sáng như người chiến thắng vĩ đại.',
   },
   {
@@ -188,6 +214,7 @@ export const SKINS = [
     name: 'Núi Lửa Phun Trào',
     icon: '🌋',
     price: 95,
+    type: 'skin',
     description: 'Nóng bỏng và bùng nổ bất ngờ.',
   },
   {
@@ -195,6 +222,7 @@ export const SKINS = [
     name: 'Ánh Trăng',
     icon: '🌕',
     price: 80,
+    type: 'skin',
     description: 'Lặng lẽ nhưng chiếu sáng toàn bàn cờ.',
   },
   {
@@ -202,6 +230,7 @@ export const SKINS = [
     name: 'Trung Tâm Robot',
     icon: '🛸',
     price: 105,
+    type: 'skin',
     description: 'Điều khiển mọi nước đi bằng công nghệ.',
   },
   {
@@ -209,6 +238,7 @@ export const SKINS = [
     name: 'Mặt Nạ Ác Quỷ',
     icon: '😈',
     price: 100,
+    type: 'skin',
     description: 'Đầy mưu mô và thách thức.',
   },
 ];
