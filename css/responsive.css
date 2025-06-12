@@ -1,0 +1,71 @@
+/* ===================================== */
+/* responsive.css - Media query điều chỉnh layout các thiết bị */
+/* ===================================== */
+
+/* Mobile-first: tất cả các layout chính đã tối ưu theo vmin/vw */
+
+@media (min-width: 600px) {
+  /* Tablet */
+  .ai-card {
+    width: 18vmin;
+  }
+
+  .name-card {
+    max-width: 60vw;
+  }
+
+  .confirm-box {
+    padding: 3vh 4vw;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Small desktop */
+  .ai-card {
+    width: 16vmin;
+  }
+
+  .game-title {
+    font-size: 2.5rem;
+  }
+
+  .score-pop {
+    font-size: 1.2rem;
+  }
+
+  #player-name-input {
+    font-size: 1.2rem;
+  }
+
+  #start-game-btn {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Large desktop */
+  .ai-list {
+    gap: 2vmin;
+  }
+
+  .ai-card {
+    width: 14vmin;
+  }
+
+  .name-card {
+    max-width: 32vw;
+  }
+
+  .confirm-box {
+    font-size: 1.3rem;
+  }
+
+  .result-overlay {
+    font-size: 2.5rem;
+  }
+
+  .level-up-glow {
+    font-size: 2.2rem;
+  }
+}

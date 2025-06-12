@@ -1,0 +1,46 @@
+/* ===================================== */
+/* base.css - Global style, font, màu nền, button chung */
+/* ===================================== */
+
+/* Cài đặt chung cho body và bố cục chính */
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(160deg, #1a1a1a, #000000);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Container chính của game */
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2vh;
+}
+
+/* Button và nút bấm chung */
+button,
+.btn {
+  background: #00f0ff;
+  color: #000;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button:hover,
+.btn:hover {
+  background: #00e6e6;
+  transform: scale(1.05);
+}
+
+/* Lớp ẩn các thành phần không cần hiển thị */
+.hidden {
+  display: none !important;
+}

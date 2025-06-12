@@ -1,0 +1,198 @@
+  <!-- CaroNova - Chơi với AI -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CaroNova - Chơi với AI</title>
+  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./css/shop.css" />
+    <link rel="stylesheet" href="./css/quests.css" />
+    <link rel="stylesheet" href="./css/inventory.css" />
+    <link rel="stylesheet" href="./css/effect.css" />
+    <link rel="stylesheet" href="./css/code.css" />
+<!-- 
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/overlay.css">
+    <link rel="stylesheet" href="css/responsive.css">
+-->
+  <!-- Thêm CSS ở đây -->
+</head>
+
+<body>
+  <!-- Bước 1: Menu chọn AI -->
+  <div id="ai-menu" class="overlay" style="flex-direction: column; align-items: center; padding: 20px;">
+  <h1 class="game-title">CaroNova</h1>
+  <h2>Chọn AI</h2>
+  <div class="ai-list"></div>
+  <button id="next-to-name-btn" style="margin-top: 20px;">Tiếp theo</button>
+  </div>
+
+
+
+<!-- Bước 2: Nhập tên người chơi -->
+<div id="name-input-overlay" class="overlay" style="display: none; flex-direction: column; align-items: center;">
+  <div class="name-card">
+    <h2 style="text-align: center; margin-bottom: 20px;">Nhập tên người chơi</h2>
+    <input type="text" id="player-name-input" placeholder="Tên của bạn..." maxlength="12" />
+    <button id="confirm-name-btn">Bắt đầu chơi</button>
+  </div>
+</div>
+
+    <!-- Giao diện menu Online -->
+<div id="online-menu" class="overlay hidden" style="flex-direction: column; align-items: center;">
+  <div class="name-card">
+    <h2 style="text-align: center; margin-bottom: 20px;">Chế độ Online</h2>
+    
+    <div id="online-user-info" class="center-text">
+     <span class="user-icon">👤</span>
+    <span id="display-name-label">Dang</span>
+    </div>
+  <button id="logout-btn" class="online-btn">Đăng xuất</button>
+  <button id="create-room-btn" class="online-btn">🆕 Tạo phòng</button>
+  <button id="join-room-btn" class="online-btn">📋 Tham gia phòng</button>
+  <button id="cancel-online-btn" class="online-btn">↩️ Hủy</button>
+  </div>
+</div>
+
+  <!-- Giao diện chính của game -->
+  <div id="game-container" style="display: none;">
+  <h1 class="glow-title">CaroNova</h1>
+  <div style="text-align: center; margin-bottom: 8px;">
+  <div id="room-id-display" style="
+    font-size: 1rem;
+    color: #00f0ff;
+    text-shadow: 0 0 6px #00f0ff;
+    margin-top: 4px;">
+  </div>
+
+<button id="voucher-btn" title="Nhập mã quà tặng">🎁</button>
+<script type="module">
+  const voucherBtn = document.getElementById('voucher-btn');
+  voucherBtn?.addEventListener('click', () => {import('./js/code-ui.js').then(m => m.showCodePopup());});
+</script>
+<button id="shop-btn"         title="Mở Shop">🛍️</button>
+<button id="inventory-btn"    title="Mở bộ sưu tập">🎒</button>
+<button id="ai-inventory-btn" title="Kho skin AI">🤖</button>
+<button id="quest-btn"        title="Xem nhiệm vụ">📜</button>
+<!-- Popup Inventory -->
+<div id="inventory-popup" style="display:none;"></div>
+
+</div>
+
+ <!-- Chỉ hiển thị khi ở chế độ Online -->
+  <div class="player-layout">
+  <div id="player-left" class="player-info player-me"></div>
+  <div id="player-right" class="player-info player-opponent"></div>
+  </div>
+
+    <div class="board-controls">
+      <button id="reset-online-btn" class="hidden">🔄 Chơi lại ván mới</button>
+      <button id="reset-btn">🔄 Chơi lại</button>
+      <button id="reset-stats-btn">🧹 Reset</button>
+      <div id="timer">⏱️ 00:00</div>
+      <div id="timer-online" class="hidden">⏱️ 00:00</div>
+      <div id="status">--</div>
+      <div id="scoreboard">
+        🏆Thắng:<span id="player-wins">0</span> 
+        ❌Thua:<span id="player-losses">0</span> 
+      </div>
+    </div>
+    <div id="turn-progress-wrapper">
+    <div id="turn-progress-bar"></div>
+    </div>
+    <div id="board" class="board"></div>
+  </div>
+
+<!-- Modal Đăng ký/Đăng nhập -->
+<div id="auth-modal" class="overlay hidden">
+  <div class="overlay-box" style="max-width:370px;">
+    <h2 id="auth-title">Đăng nhập</h2>
+    <form id="auth-form" autocomplete="off">
+      <input id="auth-fullname" type="text" placeholder="Họ và tên" style="display:none; margin:4px 0;width:95%" maxlength="40" />
+      <input id="auth-birthday" type="date" style="display:none; margin:4px 0;width:95%" />
+      <select id="auth-gender" style="display:none; margin:4px 0;width:99%">
+        <option value="">Chọn giới tính</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+        <option value="Khác">Khác</option>
+      </select>
+      <input id="auth-username" type="text" placeholder="Tên đăng nhập (4-16 ký tự)" style="display:none; margin:4px 0;width:95%" maxlength="16" />
+<input
+  id="auth-email"
+  type="text"
+  placeholder="Email hoặc tên đăng nhập"
+  style="margin:4px 0;width:95%"
+  maxlength="40"
+  autocomplete="username"/>
+      <input id="auth-password" type="password" placeholder="Mật khẩu (6-12 ký tự)" autocomplete="current-password" style="margin:4px 0;width:95%" maxlength="12" />
+      
+      <label id="rule-label" style="display:none; margin:6px 0; font-size: 0.96em; cursor:pointer;">
+        <input id="auth-agree" type="checkbox" required /> Tôi đồng ý với 
+        <span id="rule-link" style="color: #00f; text-decoration: underline; cursor: pointer;">Quy định sử dụng</span>
+      </label>
+      <button id="auth-action-btn" type="submit">Đăng nhập</button>
+      <button type="button" id="toggle-auth-btn" style="margin-top:10px;">Chưa có tài khoản? Đăng ký</button>
+      <button type="button" id="close-auth-modal" style="margin-top:6px;">Hủy</button>
+      <div id="auth-message" style="margin-top:8px;color:salmon;"></div>
+    </form>
+  </div>
+</div>
+<!-- Popup Quy định sử dụng -->
+<div id="rule-popup" style="display:none; position:fixed; top:10%; left:50%; transform:translateX(-50%); background:white; color:#111; padding:24px; border-radius:12px; z-index:9999; max-width:360px; box-shadow:0 0 12px #0009;">
+  <h3>Quy định sử dụng CaroNova</h3>
+  <ol style="font-size: 1rem; line-height:1.7;">
+    <li>Hãy tử tế và lịch sự.</li>
+    <li>Tránh lời nói khó chịu hoặc bắt nạt.</li>
+    <li>Không đăng quảng cáo hoặc tin rác.</li>
+    <li>Tôn trọng quyền riêng tư của mọi người.</li>
+    <li>Không chia sẻ tài khoản cho người khác.</li>
+    <li>Không sử dụng cheat, hack, hay phần mềm gian lận.</li>
+    <li>Không phát tán thông tin cá nhân của người khác.</li>
+    <li>CaroNova có quyền xóa tài khoản vi phạm mà không cần báo trước.</li>
+  </ol>
+  <button onclick="document.getElementById('rule-popup').style.display='none'">Đã hiểu</button>
+</div>
+
+  <div id="game-version" class="tooltip" data-tooltip="Xem thông tin cập nhật phiên bản">ℹ️ v1.2</div>
+    <div id="version-info-popup" class="hidden version-popup">
+      <h3>Thông tin phiên bản v1.2-R1</h3>
+      <ul>
+        <li> Nâng cấp AI.</li>
+        <li> Voice AI.</li>
+        <li> Hệ thống tính điểm và level.</li>
+        <li> Lưu thống kê và hiển thị kết quả.</li>
+        <li> Cập nhật âm thanh.</li>
+        <li> Cập nhật biểu cảm của AI.</li>
+        <li> AI nâng cao <b>- Coming soon!</b></li>
+        <li> Chế độ Online <b>- Beta!</b></li>
+        <li> Phiên bản <b>v1.2-R1</b> đang phát triển...</li>
+        <li> Nhiệm vụ và phần thưởng.</li>
+        <li> Kho skin AI.</li>
+        <li> Shop và bộ sưu tập.</li>
+        <li> Hệ thống chat - đang phát triển.</li>
+      </ul>
+      <button id="close-version-popup">Đóng</button>
+    </div>
+
+  <script type="module" src="js/menu.js"></script>
+  <script type="module" src="js/game-online.js"></script>
+  <script type="module" src="js/quests.js"></script>
+  <script type="module" src="js/quest-ui.js"></script>
+  <script type="module" src="js/inventory-ui.js"></script>
+
+
+  <script type="module">import { openShop } from './js/shop-ui.js';
+  document.getElementById('shop-btn').addEventListener('click', openShop);
+  </script>
+  <script type="module">
+  import { openInventory, openAIInventory } from './js/inventory.js';
+  document.getElementById('inventory-btn')?.addEventListener('click', () => openInventory());
+  document.getElementById('ai-inventory-btn')?.addEventListener('click', () => openAIInventory());
+  </script>
+  <script type="module"> import { renderAIList } from './js/ai-list.js';renderAIList();</script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+/* ================= SHOP STYLE ================= */
+#shop {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1c1f26;
+  color: white;
+  padding: 3vw;
+  border-radius: 1.5vw;
+  box-shadow: 0 0 1vw #000a;
+  width: min(95vw, 600px);
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  z-index: 9999;
+}
+#shop::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+.close-btn {
+  padding: 8px 20px;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.close-btn:hover {
+  background: #d93030;
+}
+
+.shop-close-container {
+  text-align: center;
+  margin-top: 1.2rem;
+}
+
+#shop button {
+  white-space: nowrap;
+}
+
+#shop h2 {
+  margin-bottom: 1.5vw;
+  text-align: center;
+  font-size: clamp(1rem, 1.8vw, 1.4rem);
+}
+
+.coin-display {
+  text-align: center;
+  margin-bottom: 1.5vw;
+  font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+}
+
+.skin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(26vw, 100px), 1fr));
+  gap: 1vw;
+  margin-bottom: 1.5vw;
+  justify-items: center;
+}
+
+.skin-item {
+  background: #2a2d35;
+  padding: 1vw;
+  border-radius: 0.8vw;
+  text-align: center;
+  border: 1px solid #308c91;
+  box-shadow: 0 0.25vw 0.5vw #0005;
+  width: 100%;
+  max-width: 100px; /* Giới hạn chiều rộng */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.skin-item .skin-icon {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  margin-bottom: 0.4vw;
+}
+
+.skin-name {
+  font-weight: bold;
+  font-size: clamp(0.8rem, 1.1vw, 1rem);
+}
+
+.skin-desc {
+  font-size: clamp(0.7rem, 0.95vw, 0.85rem);
+  color: #ccc;
+  margin: 0.4vw 0;
+  min-height: 2.4em; /* 2 dòng */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.skin-item button {
+  padding: 0.5vw 1vw;
+  border: none;
+  border-radius: 0.5vw;
+  cursor: pointer;
+  background: #a20c0c;
+  color: white;
+  font-weight: bold;
+  font-size: clamp(0.75rem, 0.9vw, 0.95rem);
+  gap: 4px;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+}
+.skin-item button:hover {
+  background: #00cc66;
+  box-shadow: 0 0.25vw 0.5vw #0005;
+}
+.skin-item button[disabled] {
+  background: #555;
+  cursor: not-allowed;
+}
+.skin-item:hover {
+  border-color: #fbff00;
+  box-shadow: 0 0.5vw 1vw #0005;
+}
+
+#shop-btn {
+  position: fixed;
+  right: 2vw;
+  width: 46px;
+  height: 46px;
+  font-size: 1.8rem;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  z-index: 10;
+}
+#shop-btn:hover {
+  transform: scale(1.2);
+}
+#shop-btn {
+  top: 3.5vw;
+  right: 54vw;
+}
+.reward-popup {
+  position: fixed;
+  top: 40vh;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #00c853;
+  color: #222;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  box-shadow: 0 0 8px #000a;
+  z-index: 9999;
+  animation: popupFade 3.5s ease-out;
+}
+
+@keyframes popupFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  30% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -40px);
+  }
+}
+
+/* Nút X luôn nổi trong shop */
+#shop-close-fixed {
+  position: sticky;
+  top: 30px; /* Cách trên 30px */
+  margin-left: auto; /* ✅ Đẩy sang phải */
+  display: block;
+  background: #000;
+  color: white;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  padding: 4px 10px;
+  z-index: 10001;
+  cursor: pointer;
+}
+#shop-close-fixed:hover {
+  background: #00f0ff;
+  color: black;
+  transform: scale(1.1);
+}
+
+/* Hiệu ứng preview cho các hiệu ứng */
+.effect-preview-preview {
+  width: 10vw; /* Chiếm 10% chiều rộng của cửa sổ trình duyệt */
+  height: 10vw; /* Giữ tỷ lệ vuông, có thể thay bằng 10vh nếu muốn theo chiều cao */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  margin: 1em auto; /* Dễ co giãn hơn so với pixel */
+  position: relative;
+  background: transparent;
+  overflow: hidden;
+}
+
+.preview-icon {
+  font-size: 1.4rem;
+  color: white;
+  display: inline-block;
+  pointer-events: none;
+}

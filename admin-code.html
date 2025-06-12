@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎁 Quản lý Mã Quà Tặng</title>
+  <link rel="stylesheet" href="./css/admin.css" />
+  <link rel="stylesheet" href="./css/popup.css" />
+</head>
+<body>
+  <div class="admin-voucher-page">
+<div class="voucher-header">
+  <h1>🎁 Quản lý mã quà tặng</h1>
+  <div class="voucher-actions">
+    <button id="btn-check-status" class="add-btn">📋 Kiểm tra mã</button>
+    <button id="btn-add-code" class="add-btn">➕ Thêm mới</button>
+  </div>
+</div>
+
+
+    <div class="filter-bar">
+      <input type="text" id="search-input" placeholder="Tìm mã hoặc phần thưởng..." />
+      <select id="status-filter">
+        <option value="">Tất cả</option>
+        <option value="active">Hoạt động</option>
+        <option value="inactive">Không hoạt động</option>
+        <option value="expired">Hết hạn</option>
+      </select>
+    </div>
+
+    <div class="code-table-wrapper">
+      <table class="code-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Mã</th>
+            <th>Phần thưởng</th>
+            <th>Loại</th>
+            <th>Lượt</th>
+            <th>Ngày tạo</th>
+            <th>Hạn sử dụng</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+        </thead>
+        <tbody id="code-list-body">
+          <!-- render bằng JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- FORM tạo mã: popup -->
+  <div id="code-form-overlay" class="form-overlay hidden">
+    <div class="form-popup">
+      <h2>🎁 Tạo Mã Quà Tặng</h2>
+      <form id="code-form">
+        <div class="form-group">
+          <label>🔡 Tiền tố mã (tùy chọn):</label>
+          <input id="code-input" placeholder="VD: CRNV" />
+        </div>
+
+        <div class="form-group">
+          <label>🔤 Chiều dài mã (6–16 ký tự):</label>
+          <input id="code-length" type="number" min="6" max="16" value="12" />
+        </div>
+
+        <div class="form-group">
+          <label>🔁 Loại mã:</label>
+          <select id="type-select">
+            <option value="single">🔒 Dùng 1 lần / người</option>
+            <option value="global">🌍 Dùng chung nhiều người</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>🔢 Số lượng mã muốn tạo:</label>
+          <input id="code-amount" type="number" value="1" min="1" max="100" />
+        </div>
+
+        <div class="form-group">
+          <label>🔁 Số lượt dùng tối đa (nếu là global):</label>
+          <input id="max-uses" type="number" placeholder="Mặc định: 1000" />
+        </div>
+
+        <div class="form-group">
+          <label>⏳ Hạn sử dụng:</label>
+          <input id="expires-at" type="date" />
+        </div>
+
+        <div class="form-group reward-wrapper">
+          <label>🎁 Phần thưởng:</label>
+          <div class="reward-section">
+            <select id="reward-type">
+              <option value="coin">💰 Xu</option>
+            </select>
+            <input id="reward-value" type="number" placeholder="Số lượng" min="1" value="" />
+            <select id="reward-skin" style="display:none;">
+            </select>
+          </div>
+          <ul id="reward-list"></ul>
+          <input type="hidden" id="reward-json" />
+        </div>
+
+        <div class="form-footer">
+          <button id="close-form" type="button">Đóng</button>
+          <button type="submit">Tạo mã</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Popup kiểm tra tình trạng mã -->
+<div id="check-code-popup" class="form-overlay hidden">
+  <div class="form-popup" style="max-width: 400px;">
+    <h2>📋 Kiểm tra mã</h2>
+    <div class="form-group">
+      <label>Nhập mã:</label>
+      <input type="text" id="check-code-input" placeholder="Nhập mã cần kiểm tra..." />
+    </div>
+    <div id="check-code-result" style="margin-top: 1rem; font-size: 0.95rem;"></div>
+    <div class="form-footer">
+<button class="popup-close-btn" type="button">Đóng</button>
+    </div>
+  </div>
+</div>
+
+  <script type="module" src="./js/admin-code.js"></script>
+</body>
+</html>

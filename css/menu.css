@@ -1,0 +1,116 @@
+/* ===================================== */
+/* menu.css - Menu AI, menu online, avatar, nhập tên */
+/* ===================================== */
+
+/* Layout menu chọn AI */
+.ai-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2vh;
+}
+
+.ai-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5vmin;
+  max-width: 90vw;
+  margin-top: 1vh;
+}
+
+.ai-card {
+  width: 20vmin;
+  aspect-ratio: 1 / 1.4;
+  background: #222;
+  border-radius: 1rem;
+  border: 0.2rem solid transparent;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+  transition: transform 0.2s, border 0.2s;
+  overflow: hidden;
+  position: relative;
+}
+
+.ai-card:hover {
+  transform: scale(1.05);
+  border-color: #00f0ff;
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  padding: 1vh;
+  text-align: center;
+}
+
+.card-front img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+.card-back {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 0.5vh;
+}
+
+.ai-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 0.8vh;
+}
+
+/* Nút bắt đầu game */
+#start-game-btn {
+  margin-top: 2vh;
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+}
+
+/* Giao diện nhập tên người chơi */
+.name-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2vh;
+  width: 90vw;
+  max-width: 420px;
+}
+
+#player-name-input {
+  padding: 0.6rem;
+  font-size: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: none;
+  text-align: center;
+}
+
+#confirm-name-btn,
+#next-to-name-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  margin-top: 1vh;
+}
+
+/* Tên game */
+.game-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px #00f0ff;
+  margin: 2vh 0;
+}
+
+/* Thông tin 2 người chơi */
+.player-layout {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1vh;
+  padding: 0 2vw;
+  font-size: 0.9rem;
+}

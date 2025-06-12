@@ -1,0 +1,135 @@
+/* ===================================== */
+/* overlay.css - Popup xác nhận, kết quả, level-up, emoji */
+/* ===================================== */
+
+/* Overlay mờ nền đen */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Hộp xác nhận */
+.confirm-box {
+  background: #222;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  max-width: 90vw;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+/* Overlay kết quả thắng/thua */
+.result-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: popInOut 3s ease forwards;
+}
+
+.result-overlay.player-lose {
+  background: rgba(255, 0, 0, 0.5);
+}
+
+@keyframes popInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Popup phiên bản */
+.version-popup {
+  position: absolute;
+  bottom: 2vh;
+  right: 2vw;
+  background: #111;
+  color: #00f0ff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+  z-index: 999;
+}
+
+/* Hiệu ứng level-up */
+.level-up-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 255, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeInOut 2s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.level-up-glow {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ff99;
+  text-shadow: 0 0 10px #00ff99;
+}
+
+/* Emoji phản ứng */
+.reaction-bubble {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: popInOut 2s ease forwards;
+  pointer-events: none;
+}
+
+.player-reaction-box {
+  position: absolute;
+  top: -3vh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.2rem;
+}

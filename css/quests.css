@@ -1,0 +1,91 @@
+/* quests.css - Style cho hệ thống nhiệm vụ */
+
+.filter-btn {
+  background: #222;
+  border: none;
+  color: #fff;
+  padding: 0.4em 0.8em;
+  margin: 0 0.3em;
+  border-radius: 0.4em;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1em;
+}
+
+.filter-btn:hover {
+  background: #444;
+}
+
+.filter-btn.active {
+  background-color: #00f0ff;
+  color: #000;
+  font-weight: bold;
+}
+
+.reward-popup {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fffbe6;
+  color: #000;
+  padding: 0.8em 1.2em;
+  font-size: 1.1em;
+  font-weight: bold;
+  border-radius: 0.6em;
+  box-shadow: 0 0 1em #ffd700;
+  z-index: 9999;
+  animation: popFade 3s forwards;
+}
+
+@keyframes popFade {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -10%);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 10%);
+  }
+}
+
+#quest-btn {
+  position: fixed;
+  top: 3.5vw;
+  right: 50vw;
+  font-size: 1.8rem;
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#quest-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Cuộn nhiệm vụ dài */
+#quest-list {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 0.5em;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+#quest-list::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
