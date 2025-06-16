@@ -266,7 +266,7 @@ body {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 115vh;
   background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
@@ -360,14 +360,14 @@ body {
   border: 2px solid #00f0ff88;
 }
 
-.ai-card img {
+/*.ai-card img {
   width: 100px;
   height: 100px;
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 0px;
 }
-
+*/
 #start-game-btn {
   padding: 10px 25px;
   font-size: 1.2rem;
@@ -906,6 +906,7 @@ body {
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.05);
   transition: border 0.3s, box-shadow 0.3s;
+  overflow: hidden;
 }
 
 .card-inner {
@@ -1180,3 +1181,96 @@ body {
   border-radius: 50%;
 }
 */
+/* Container cuộn dọc chứa danh sách AI */
+.ai-scroll-container {
+  width: 100%;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow-y: auto;
+  padding: 0vmin;
+  box-sizing: border-box;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+.ai-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Danh sách AI hiển thị dạng grid */
+.ai-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28vmin, 1fr));
+  gap: 3vmin;
+  justify-items: center;
+  align-items: stretch;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Mỗi card AI */
+.ai-card {
+  aspect-ratio: 3 / 4;
+  max-width: 28vmin; /* Giới hạn chiều rộng tối đa */
+  min-height: 37vmin; /* Chiều cao tối thiểu */
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 0.3vmin solid transparent;
+  border-radius: 1vmin;
+  padding: 0.2vmin;
+  box-sizing: border-box;
+  color: white;
+  text-align: center;
+  transition: border 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+
+.ai-card.selected {
+  border-color: #0ff;
+  box-shadow: 0 0 1vmin #0ff;
+}
+
+.ai-card:hover {
+  border-color: #00f0ff88;
+}
+
+.ai-card img {
+  width: 14vmin;
+  height: 14vmin;
+  object-fit: cover;
+  border-radius: 1vmin;
+  margin-bottom: 1em;
+  margin-top: 0vmin;
+}
+.ai-card h3 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1.2em;
+  margin-top: 0vmin;
+}
+
+.ai-card p {
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: #ccc;
+}
+
+/* Tiêu đề */
+.game-title {
+  font-size: 3.2rem;
+  color: #00f0ff;
+  text-align: center;
+  margin: 0rem 0 0.1rem;
+}
+
+/* Nút "Tiếp theo" */
+#next-to-name-btn {
+  margin-top: 2rem;
+  padding: 0.8em 2em;
+  background: linear-gradient(to right, #00f0ff, #00c8d4);
+  font-size: 1rem;
+  border-radius: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+  box-shadow: 0 0.4em 1em rgba(0, 240, 255, 0.3);
+}

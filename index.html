@@ -23,10 +23,14 @@
 
 <body>
   <!-- Bước 1: Menu chọn AI -->
-  <div id="ai-menu" class="overlay" style="flex-direction: column; align-items: center; padding: 20px;">
+  <div id="ai-menu" class="overlay" style="flex-direction: column; align-items: center; padding: 8px;">
   <h1 class="game-title">CaroNova</h1>
   <h2>Chọn AI</h2>
-  <div class="ai-list"></div>
+
+<div class="ai-scroll-container">
+  <div class="ai-list"></div> <!-- Sẽ được render bằng renderAIList() -->
+</div>
+
   <button id="next-to-name-btn" style="margin-top: 20px;">Tiếp theo</button>
   </div>
 
